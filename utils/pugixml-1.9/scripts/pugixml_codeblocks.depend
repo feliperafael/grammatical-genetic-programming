@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1522839196 source:/home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/src/pugixml.cpp
+	"pugixml.hpp"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<assert.h>
+	<limits.h>
+	<wchar.h>
+	<math.h>
+	<float.h>
+	<istream>
+	<ostream>
+	<string>
+	<new>
+	<stdint.h>
+
+1522839196 /home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/src/pugixml.hpp
+	"pugiconfig.hpp"
+	<stddef.h>
+	<exception>
+	<iterator>
+	<iosfwd>
+	<string>
+
+1522839196 /home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/src/pugiconfig.hpp
+

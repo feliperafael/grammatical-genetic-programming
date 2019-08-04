@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<genetic_programming>
+	<!-- here is a genetic programming node -->
+	<config>
+		<operators_rate mutation="0.1" crossover="0.9" elitism="0.1" >
+			
+		</operators_rate>
+		<search population="100" generation="500" />
+		<model maxdeep="5" />
+		<seed value="42" />
+	</config>
+	<input>	  
+		<data file="input/data/data_vst.dat"/>
+		<datagroup file="input/data/data_knn_60.grp"/>
+		<grammatic file="input/grammar/vst.dat"/>
+	</input>
+</genetic_programming>

@@ -1,0 +1,7 @@
+/home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/build/CMakeFiles/install/strip.dir
+/home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/build/CMakeFiles/edit_cache.dir
+/home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/build/CMakeFiles/pugixml.dir
+/home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/build/CMakeFiles/rebuild_cache.dir
+/home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/build/CMakeFiles/list_install_components.dir
+/home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/build/CMakeFiles/install/local.dir
+/home/felipe/Documentos/pg/ggp_vst/pgg_classification_cmake/utils/pugixml-1.9/build/CMakeFiles/install.dir
