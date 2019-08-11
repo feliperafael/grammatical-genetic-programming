@@ -16,16 +16,6 @@ class Subject {
     double ** constants = NULL;
     vector<Tree*> trees;//representa a solução do problema
 
-    //apenas para classificao
-    float acertos = 0;//
-    float erros = 0;//
-    /////////////////////
-
-    bool optimized = false;
-    int ranking;
-    double crowdingDistance;
-    double complexity;
-
     Subject();
     void addTree(Tree* t);
     virtual string nameIndividual() = 0; // deve printar o nome do individuo

@@ -5,11 +5,9 @@ SimpleMutation::SimpleMutation() {
 }
 
 void SimpleMutation::mutate(Subject * individuo) {
-    individuo->complexity = 0;
     for(Tree* t : individuo->trees) {
         if(checkRate(conf->mutationRate)) {
             auxMutate(t);
-            individuo->complexity += t->linearModel.size();
         }
     }
 }

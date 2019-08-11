@@ -56,9 +56,9 @@ void Search::createsInitialPopulation() {
 void Search::replaceAllConst(int initialIndex, int finalIndex) {
     //#pragma omp parallel for num_threads(conf->NUM_THREADS)
     for(int i = initialIndex; i < finalIndex; i++) {
-        if(!pop[i]->optimized) {
+        //if(!pop[i]->optimized) {
             pop[i]->trees[0]->replaceAllConst();
-        }
+        //}
     }
 }
 
@@ -101,7 +101,7 @@ Subject ** Search::evolve() {
 void Search::EvaluatePopulation(int initialIndex, int finalIndex, int optimizeRange) {
     #pragma omp parallel for num_threads(conf->NUM_THREADS)
     for(int i = initialIndex; i < finalIndex; i++) {
-        if(i < optimizeRange && !pop[i]->optimized) {
+        /*if(i < optimizeRange && !pop[i]->optimized) {
             Subject* ind_ = pop[i]->clone();
             parser->Evaluate(ind_);
             parser->Optimize(ind_);
@@ -111,8 +111,9 @@ void Search::EvaluatePopulation(int initialIndex, int finalIndex, int optimizeRa
                 delete ind_;
             }
         } else {
+        */
             pop[i]->fitness = parser->Evaluate(pop[i]);
-        }
+        //}
     }
 
 }
@@ -120,7 +121,7 @@ void Search::EvaluatePopulation(int initialIndex, int finalIndex, int optimizeRa
 void Search::EvaluatePopulationValidation(int initialIndex, int finalIndex, int optimizeRange) {
     #pragma omp parallel for num_threads(conf->NUM_THREADS)
     for(int i = initialIndex; i < finalIndex; i++) {
-        if(i < optimizeRange && !pop[i]->optimized) {
+        /*if(i < optimizeRange && !pop[i]->optimized) {
             Subject* ind_ = pop[i]->clone();
 //            ind_->trees[0]->replaceAllConst();
             parserValidation->Optimize(ind_);
@@ -132,8 +133,9 @@ void Search::EvaluatePopulationValidation(int initialIndex, int finalIndex, int 
                 delete ind_;
             }
         } else {
+        */
             pop[i]->fitness = parser->Evaluate(pop[i]);
-        }
+        //}
         conf->evaluations++;
 //        cout << "   " << i << " " << pop[i]->fitness << endl;
     }

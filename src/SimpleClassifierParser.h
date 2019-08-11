@@ -15,7 +15,6 @@ class SimpleClassifierParser : public Parser {
     virtual string nameParser();
     virtual double Evaluate(Subject* s);
     virtual void Optimize(Subject* s);
-    //virtual double Operate(int opType, int opValue, double a, double b = NULL, double c = NULL);
     virtual double Operate(int opType, int opValue, double a, double b = -9999, double c = -9999);
 
 

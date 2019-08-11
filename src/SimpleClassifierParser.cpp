@@ -16,9 +16,9 @@ void SimpleClassifierParser::Optimize(Subject* s) {
 
 }
 
-double SimpleClassifierParser::Evaluate(Subject* s) {
-    s->erros=0;
-    s->acertos=0;
+double SimpleClassifierParser::Evaluate(Subject * s) {
+    dynamic_cast<SimpleIndividuo*>(s)->erros=0;
+    dynamic_cast<SimpleIndividuo*>(s)->acertos=0;
     for(int i = 0; i < 2; i++){
         for(int j = 0; j < 2; j++){
             confusion_matrix[i][j] = 0;
@@ -40,7 +40,7 @@ double SimpleClassifierParser::Evaluate(Subject* s) {
 
             if(r != dataset[j][data->variables + arvore]) { // errou
                 fit += 1;
-                s->erros+=1;
+                dynamic_cast<SimpleIndividuo*>(s)->erros+=1;
                 if(r == 0 && dataset[j][data->variables + arvore] == 1){
                      fit+=0.86;
                      fit+=1;
@@ -54,7 +54,7 @@ double SimpleClassifierParser::Evaluate(Subject* s) {
                 }else{
                     confusion_matrix[1][1] += 1; // verdadeiro positivo
                 }
-                s->acertos +=1;
+               dynamic_cast<SimpleIndividuo*>(s)->acertos +=1;
             }
         }
         s->trees[arvore]->fitness = fit;
