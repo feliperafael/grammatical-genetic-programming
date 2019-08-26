@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Database.h"
 #include "Grammar.h"
-//#include "No.h"
 #include "config/Configures.h"
 #include "Search.h"
 #include "parsers/SimpleParser.h"
