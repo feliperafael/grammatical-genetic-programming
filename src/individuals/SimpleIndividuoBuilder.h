@@ -6,12 +6,8 @@
 class SimpleIndividuoBuilder : public IndividuoBuilder {
   public:
     SimpleIndividuoBuilder();
-    virtual Subject * generateIndividuo() {
-        return new SimpleIndividuo(true);
-    }
-    virtual string nameIndividuo() {
-        return "SimpleIndividuo";
-    }
+    virtual Subject * generateIndividuo();
+    virtual string nameIndividuo();
     void print();
     virtual ~SimpleIndividuoBuilder();
 

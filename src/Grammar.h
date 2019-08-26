@@ -9,8 +9,8 @@
 #include <algorithm>
 #include <limits> // infinity
 #include "Database.h"
-#include "No.h"
-#include "Configures.h"
+#include "individuals/representations/tree/No.h"
+#include "config/Configures.h"
 
 
 using namespace std;

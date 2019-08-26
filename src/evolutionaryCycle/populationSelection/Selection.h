@@ -1,6 +1,6 @@
 #ifndef SELECTION_H
 #define SELECTION_H
-#include "Subject.h"
+#include "../../individuals/Subject.h"
 
 class Selection {
   public:

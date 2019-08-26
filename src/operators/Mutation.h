@@ -1,6 +1,6 @@
 #ifndef MUTATION_H
 #define MUTATION_H
-#include "Subject.h"
+#include "../individuals/Subject.h"
 
 class Mutation {
   public:

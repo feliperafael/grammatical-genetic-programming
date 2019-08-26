@@ -1,48 +1,108 @@
-#include "SimpleParser.h"
+#include "SimpleClassifierParser.h"
 
-SimpleParser::SimpleParser() {
+SimpleClassifierParser::SimpleClassifierParser() {
+    for(int i = 0; i < 2; i++){
+        for(int j = 0; j < 2; j++){
+            confusion_matrix[i][j] = 0;
+        }
+    }
+}
+
+string SimpleClassifierParser::nameParser() {
+    return "SimpleClassifierParser";
+}
+
+void SimpleClassifierParser::Optimize(Subject* s) {
 
 }
 
-string SimpleParser::nameParser() {
-    return "SimpleParser";
+void SimpleClassifierParser::setDataSet(double ** x,int tam) {
+    tamDataset = tam;
+    dataset = x;
 }
 
-void SimpleParser::Optimize(Subject* s) {
+void SimpleClassifierParser::printResult(Subject * s) {}
 
+void SimpleClassifierParser::print_confusion_tree(){
+    cout << "print_confusion_tree" << endl;
+    for(int i = 0; i < 2; i++){
+        cout << "|";
+        for(int j = 0; j < 2; j++){
+            cout << confusion_matrix[i][j] << " ";
+        }
+        cout << "|";
+        cout << endl;
+    }
 }
 
-double SimpleParser::Evaluate(Subject* s) {
-    //return  1;
-    double r = 0;
-    double fit = 0 ;
+void SimpleClassifierParser::class_distribution(){
+    int class_0 = 0;
+    int class_1= 0;
+    for(int j = 0; j <tamDataset; j++) {
+        if(dataset[j][data->variables] == 0){
+            class_0 +=1;
+        }else{
+            class_1 +=1;
+        }
+    }
+    cout << "Class 0: " << class_0 << endl;
+    cout << "Class 1: " << class_1 << endl;
+    //calcula os pessoas de cada classe, para calculo de fitness
+    float maior = max(class_0, class_1);
+    float menor = min(class_0, class_1);
+    float peso = menor/maior;
+}
+
+double SimpleClassifierParser::Evaluate(Subject * s) {
+    dynamic_cast<SimpleIndividuo*>(s)->erros=0;
+    dynamic_cast<SimpleIndividuo*>(s)->acertos=0;
+    for(int i = 0; i < 2; i++){
+        for(int j = 0; j < 2; j++){
+            confusion_matrix[i][j] = 0;
+        }
+    }
+    ofstream confusion_matrix_file(".tmp/evolve_log_confusion_matrix.txt");
+
+    double totalFit = 0, fit, r;
     for(int arvore = 0; arvore < conf->numTree; arvore++) {
-        fit = 0 ;
         s->trees[arvore]->fitness = 0;
-        for( int j = 0; j <tamDataset; j++) { // para todos os dados do conjunto de treinamento
+        fit = 0;
+        for(int j = 0; j <tamDataset; j++) { // para todos os dados do conjunto de treinamento
             r = AuxEvaluate(s,arvore + 1,dataset[j]);
-            //cout << "Evaluate: " << r << endl;
             if(std::isinf(r) || std::isnan(r)) {
                 s->trees[arvore]->fitness = INFINITY;
-                s->trees[arvore]->root->print();
+                cout << "isinf ou isnan in simpleClassifierParser" << endl;
                 break;
             }
-            // Para regressao // fit += pow(r - dataset[j][data->variables + arvore], 2);
-            if (r != dataset[j][data->variables + arvore]) {
-                fit++;
-                if(r==0) {
-                    fit++;
+
+            if(r != dataset[j][data->variables + arvore]) { // errou
+                fit += 1;
+                dynamic_cast<SimpleIndividuo*>(s)->erros+=1;
+                if(r == 0 && dataset[j][data->variables + arvore] == 1){
+                     fit+=0.86;
+                     fit+=1;
+                    confusion_matrix[0][1] += 1; // falso negativo
+                }else{
+                    confusion_matrix[1][0] += 1; // falso positivo
                 }
+            } else {
+                if(r == 0){
+                    confusion_matrix[0][0] += 1; // verdadeiro negativo
+                }else{
+                    confusion_matrix[1][1] += 1; // verdadeiro positivo
+                }
+               dynamic_cast<SimpleIndividuo*>(s)->acertos +=1;
             }
         }
-        //fit /= tamDataset;
-        //cout << "Fit: " << fit << endl;
         s->trees[arvore]->fitness = fit;
+        totalFit += fit;
     }
-    return fit;
+    confusion_matrix_file << confusion_matrix[0][0] << "," << confusion_matrix[0][1] ;
+    confusion_matrix_file << confusion_matrix[1][0] << "," << confusion_matrix[1][1] << endl;
+    return totalFit;
 }
 
-double SimpleParser::Operate(int opType, int opValue, double a, double b, double c) {
+double SimpleClassifierParser::Operate(int opType, int opValue, double a, double b, double c) {
     double r;
     if(opType == conf->bynaryArithmeticOperators) {
         if(opValue == 0)
@@ -101,17 +161,22 @@ double SimpleParser::Operate(int opType, int opValue, double a, double b, double
             r = a > b;
         else if(opValue == 5)
             r = a != b;
+    } else if(opType == conf->programOperators) {
+        if(opValue == 0) { // if-else
+            if(c)
+                r = a;
+            else
+                r = b;
+        }
     }
 
     if(std::isnan(r) || std::isinf(r)) {
-//        cout << "      " << opType << " " << opValue << " " << a << " " << b << " " << r << endl;
         return -9999;
     }
-//    cout << "      " << r << endl;
     return r;
 }
 
-double SimpleParser::AuxEvaluate(Subject* s, int model, double* dat) {
+double SimpleClassifierParser::AuxEvaluate(Subject* s, int model, double* dat) {
     SimpleIndividuo * s1 = dynamic_cast<SimpleIndividuo*>(s);
     int coeficientCount = 0;
     stack<double> stk;
@@ -148,6 +213,15 @@ double SimpleParser::AuxEvaluate(Subject* s, int model, double* dat) {
             stk.pop();
             stk.push(Operate(get<0>(t), get<1>(t), a, b));
         } else if( var == conf->programOperators) {
+            if((int)get<1>(t) == 0) { //if-selse
+                double bool_ = stk.top();
+                stk.pop();
+                double b = stk.top();
+                stk.pop();
+                double a = stk.top();
+                stk.pop();
+                stk.push(Operate(get<0>(t), get<1>(t), a, b, bool_));
+            }
             //programOperators
         } else if( var == conf->adjustedCoeficient ) { // constant
 //            cout << "   " << coeficientCount << endl;
@@ -155,7 +229,6 @@ double SimpleParser::AuxEvaluate(Subject* s, int model, double* dat) {
                 stk.push(s1->constants[model - 1][coeficientCount]);
             else
                 stk.push(1);
-//            cout << s1->constants[model - 1][coeficientCount] << " " << coeficientCount << endl;
             coeficientCount++;
         }
 
@@ -164,7 +237,7 @@ double SimpleParser::AuxEvaluate(Subject* s, int model, double* dat) {
     return stk.top();
 }
 
-SimpleParser::~SimpleParser() {
+SimpleClassifierParser::~SimpleClassifierParser() {
     //dtor
 }
 

@@ -292,6 +292,13 @@ bool Search::SortPopulationFitnessValidation(Subject* a, Subject* b) {
     return a->fitnessValidation < b->fitnessValidation;
 }
 
+void Search::setParserTest(Parser * p) {
+    parserTest = p;
+}
+void Search::setParserValidation(Parser * p) {
+    parserValidation = p;
+}
+
 Search::~Search() {
     //dtor
     for(int i = 0; i < conf->popSize; i++) {

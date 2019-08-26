@@ -1,9 +1,9 @@
 #ifndef SIMPLEPARSER_H
 #define SIMPLEPARSER_H
 
-#include "Configures.h"
+#include "../config/Configures.h"
 #include "Parser.h"
-#include "SimpleIndividuo.h"
+#include "../individuals/SimpleIndividuo.h"
 #include <vector>
 #include <stack>
 #include <tuple>
@@ -19,12 +19,9 @@ class SimpleParser : public Parser {
     virtual double Operate(int opType, int opValue, double a, double b = -9999, double c = -9999);
 
 
-    virtual void setDataSet(double ** x,int tam) {
-        tamDataset = tam;
-        dataset = x;
-    }
+    virtual void setDataSet(double ** x,int tam);
 
-    virtual void printResult(Subject * s) {}
+    virtual void printResult(Subject * s);
 
     ~SimpleParser();
   protected:

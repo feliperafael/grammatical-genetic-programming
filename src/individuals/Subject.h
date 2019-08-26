@@ -2,7 +2,7 @@
 #define SUBJECT_H
 #include <iostream>
 #include <vector>
-#include "Tree.h"
+#include "representations/tree/Tree.h"
 #include <string>
 
 using namespace std;

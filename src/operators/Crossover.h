@@ -1,6 +1,6 @@
 #ifndef CROSSOVER_H
 #define CROSSOVER_H
-#include "Subject.h"
+#include "../individuals/Subject.h"
 
 class Crossover {
   public:

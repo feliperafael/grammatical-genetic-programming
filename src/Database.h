@@ -6,7 +6,7 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
-#include "Configures.h"
+#include "config/Configures.h"
 
 using namespace std;
 

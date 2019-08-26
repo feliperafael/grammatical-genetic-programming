@@ -1,18 +1,18 @@
 #ifndef PARSER_H
-#include "Configures.h"
+#include "../config/Configures.h"
 #define PARSER_H
 
-#include "Subject.h"
+#include "../individuals/Subject.h"
 #include <string>
 
 class Parser {
   public:
-    Parser() {}
+    Parser();
     virtual double Evaluate(Subject* s) = 0;
     virtual void Optimize(Subject* s) = 0;
     virtual string nameParser() = 0;
     virtual void printResult(Subject * s) = 0;
-    ~Parser() {}
+    ~Parser();
   protected:
   private:
 

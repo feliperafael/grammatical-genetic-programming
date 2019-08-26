@@ -2,7 +2,7 @@
 #define TREE_H
 
 #include "No.h"
-#include "Configures.h"
+#include "../../../config/Configures.h"
 #include <iostream>
 #include <vector>
 #include <tuple>

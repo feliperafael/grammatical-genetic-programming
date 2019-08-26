@@ -13,9 +13,7 @@ class SimpleMutation : public Mutation {
 
   private:
     void auxMutate(Tree* t);
-    bool checkRate(double rate) {
-        return (rand()%100 < rate*100);
-    }
+    bool checkRate(double rate);
 };
 
 #endif // SIMPLEMUTATION_H

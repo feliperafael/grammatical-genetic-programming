@@ -1,6 +1,6 @@
 #ifndef OPTIMIZER_H
 #define OPTIMIZER_H
-#include "Subject.h"
+#include "../individuals/Subject.h"
 
 class Optimizer
 {

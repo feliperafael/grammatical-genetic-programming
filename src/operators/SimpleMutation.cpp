@@ -12,6 +12,10 @@ void SimpleMutation::mutate(Subject * individuo) {
     }
 }
 
+bool SimpleMutation::checkRate(double rate) {
+    return (rand()%100 < rate*100);
+}
+
 void SimpleMutation::auxMutate(Tree* t) {
     No* n = t->subTree();
     n->erase();

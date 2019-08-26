@@ -16,6 +16,10 @@ void SimpleReplace::Replace(Subject **pop) {
     }
 }
 
+bool SimpleReplace::SortMyPop(Subject* a, Subject* b) {
+    return a->trees[0]->fitness < b->trees[0]->fitness;
+}
+
 SimpleReplace::~SimpleReplace() {
 
 }

@@ -1,7 +1,7 @@
 #ifndef POPULATIONREPLACEMENT_H
 #define POPULATIONREPLACEMENT_H
 
-#include "Subject.h"
+#include "../../individuals/Subject.h"
 class PopulationReplacement {
   public:
     virtual void Replace(Subject **pop) = 0;

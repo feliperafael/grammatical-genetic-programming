@@ -1,5 +1,4 @@
 #include "Grammar.h"
-#include "Configures.h"
 
 Grammar* grammar;
 

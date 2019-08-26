@@ -1,8 +1,8 @@
 #ifndef SIMPLEREPLACE_H
 #define SIMPLEREPLACE_H
-#include "Subject.h"
+#include "../../individuals/Subject.h"
 #include "PopulationReplacement.h"
-#include "Configures.h"
+#include "../../config/Configures.h"
 #include <iostream>
 #include <algorithm>// std::sort
 
@@ -19,9 +19,7 @@ class SimpleReplace : public PopulationReplacement {
   protected:
 
   private:
-    static bool SortMyPop(Subject* a, Subject* b) {
-        return a->trees[0]->fitness < b->trees[0]->fitness;
-    }
+    static bool SortMyPop(Subject* a, Subject* b);
 };
 
 #endif // SIMPLEREPLACE_H

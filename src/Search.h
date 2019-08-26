@@ -1,26 +1,26 @@
 #ifndef SEARCH_H
-#include "Subject.h"
+#include "individuals/Subject.h"
 #include "Grammar.h"
-#include "Tree.h"
-#include "Configures.h"
-#include "Parser.h"
-#include "SimpleParser.h"
+//#include "individuals/representations/tree/Tree.cpp"
+#include "config/Configures.h"
+#include "parsers/Parser.h"
+#include "parsers/SimpleParser.h"
 #include <cmath>
 #include <algorithm>
 #include <exception>
-#include "Selection.h"
-#include "TournamentSelection.h"
-#include "PopulationReplacement.h"
-#include "SimpleReplace.h"
-#include "IndividuoBuilder.h"
-#include "SimpleIndividuoBuilder.h"
-#include "StopCriterion.h"
-#include "Generations.h"
-#include "Mutation.h"
-#include "SimpleMutation.h"
+#include "evolutionaryCycle/populationSelection/Selection.h"
+#include "evolutionaryCycle/populationSelection/TournamentSelection.h"
+#include "evolutionaryCycle/populationReplacement/PopulationReplacement.h"
+#include "evolutionaryCycle/populationReplacement/SimpleReplace.h"
+#include "individuals/IndividuoBuilder.h"
+#include "individuals/SimpleIndividuoBuilder.h"
+#include "evolutionaryCycle/stopCriterion/StopCriterion.h"
+#include "evolutionaryCycle/stopCriterion/Generations.h"
+#include "operators/Mutation.h"
+#include "operators/SimpleMutation.h"
 
-#include "Crossover.h"
-#include "SimpleCrossover.h"
+#include "operators/Crossover.h"
+#include "operators/SimpleCrossover.h"
 
 # include <omp.h>
 
@@ -69,12 +69,8 @@ class Search {
     void setSelection(Selection * seletor);
     void setStopCriterion(StopCriterion * stopCriterion);
 
-    void setParserTest(Parser * p) {
-        parserTest = p;
-    }
-    void setParserValidation(Parser * p) {
-        parserValidation = p;
-    }
+    void setParserTest(Parser * p);
+    void setParserValidation(Parser * p);
 
   protected:
 

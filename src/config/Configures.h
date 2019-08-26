@@ -4,7 +4,7 @@
 #include <time.h>       /* time */
 #include <omp.h>
 #include <string>
-#include "Grammar.h"
+#include "../Grammar.h"
 
 #define NONTERMINAL -1
 #define ERROR -2
