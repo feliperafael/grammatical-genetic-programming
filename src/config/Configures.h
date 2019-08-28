@@ -14,34 +14,21 @@
 
 
 class Configures {
+  private:
+    static Configures* instance;
+    Configures();
+
   public:
+    static Configures* getInstance();
+
     int MAXDEEP;
     int popSize;
     int generations;
-    int leastSquare = 0;
-    int mono;
-    double peso0;
-    double peso1;
     double elitism;
     double mutationRate;
     double crossoverRate;
     int numTree;
-    int NUM_THREADS = 1;
-    int memorySize;
-    int cicles;
-
-    int optimizationEvaluations;
-    int approach;
-
-    int evaluations = 0;
-    bool optimize = false;
-
-    int deuRuimOLS = 0;
-    int totalLS = 0;
-
-    int complexity = 0; //0=high 1=terminals
-
-    double* transportVector;
+    int NUM_THREADS = 1;   
 
     short constant,variable,bynaryArithmeticOperators,unaryArithmeticOperators,
           binaryLogicalOperators,unaryLogicalOperators,comparisonOperators, leastSquareOperator,
@@ -49,9 +36,6 @@ class Configures {
 
     double wall_timer;
     std::string grammar_file;
-
-    Configures();
-
 };
 
 extern Configures* conf;

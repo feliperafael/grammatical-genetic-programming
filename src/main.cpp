@@ -24,12 +24,10 @@ int main(int argc, char** argv) {
 
     grammar = new Grammar(conf->grammar_file); //
 
-
     conf->numTree = data->prediction; // seta o numero de variaveis a serem preditas. dependente do problema a ser tratado
 
     double** dados_treino = data->values;
-    //cout << "total training " << data->totalTraining << " total test " << data->totalTest << " total validation "<< data->totalValidation << endl;
-
+    
     IndividuoBuilder * individuoBuilder = NULL;
     /// Setting parser
     SimpleClassifierParser * parser = new SimpleClassifierParser();
@@ -61,7 +59,7 @@ int main(int argc, char** argv) {
 
 Configures * set_configs(char * config_file){
 
-    Configures * conf = new Configures();
+    Configures * conf = Configures::getInstance();
     pugi::xml_document doc;
     pugi::xml_node config;
     pugi::xml_node operators_rate;
@@ -90,10 +88,10 @@ Configures * set_configs(char * config_file){
     conf->NUM_THREADS = 3;
 
     data = new Database(input.child("data").attribute("file").as_string());
-    data->loadGroup(input.child("datagroup").attribute("file").as_string()); // 1000.grp pra 1000, pgDE pra 50
-    //data->print();
+    data->loadGroup(input.child("datagroup").attribute("file").as_string()); 
+   
     conf->grammar_file = input.child("grammatic").attribute("file").as_string();
-    //grammar = new Grammar(input.child("grammatic").attribute("file").as_string()); //
+
     return conf;
 
 }

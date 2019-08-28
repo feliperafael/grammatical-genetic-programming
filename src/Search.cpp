@@ -21,9 +21,6 @@ Search::Search() {
     setMutation(NULL);
     setCrossover(NULL);
     setSelection(NULL);
-
-    // omp_set_num_threads(conf->NUM_THREADS);
-
 }
 
 
@@ -35,9 +32,6 @@ Search::Search(Parser* parser,PopulationReplacement * populationreplace, Individ
     setMutation(NULL);
     setCrossover(NULL);
     setSelection(NULL);
-
-    // omp_set_num_threads(conf->NUM_THREADS);
-
 }
 
 /**
@@ -78,7 +72,7 @@ Subject ** Search::evolve() {
     //enquanto o criterio de parada não for satisfeito
     while(!stopCriterion->Checks()){
 
-        Operate();//Realiza cross e mut
+        Operate();
 
         EvaluatePopulation(conf->popSize, conf->popSize * 2);
 
@@ -101,52 +95,16 @@ Subject ** Search::evolve() {
 void Search::EvaluatePopulation(int initialIndex, int finalIndex, int optimizeRange) {
     #pragma omp parallel for num_threads(conf->NUM_THREADS)
     for(int i = initialIndex; i < finalIndex; i++) {
-        /*if(i < optimizeRange && !pop[i]->optimized) {
-            Subject* ind_ = pop[i]->clone();
-            parser->Evaluate(ind_);
-            parser->Optimize(ind_);
-            if(ind_->fitness < pop[i]->fitness) {
-                cout << pop[i]->fitness << " " << ind_->fitness << endl;
-                swap(pop[i], ind_);
-                delete ind_;
-            }
-        } else {
-        */
             pop[i]->fitness = parser->Evaluate(pop[i]);
-        //}
     }
 
 }
 
 void Search::EvaluatePopulationValidation(int initialIndex, int finalIndex, int optimizeRange) {
     #pragma omp parallel for num_threads(conf->NUM_THREADS)
-    for(int i = initialIndex; i < finalIndex; i++) {
-        /*if(i < optimizeRange && !pop[i]->optimized) {
-            Subject* ind_ = pop[i]->clone();
-//            ind_->trees[0]->replaceAllConst();
-            parserValidation->Optimize(ind_);
-            ind_->fitness = parser->Evaluate(ind_);
-            if(ind_->fitness < pop[i]->fitness) {
-                cout << ind_->fitness << " " << pop[i]->fitness << endl;
-//                cin.get();
-                swap(pop[i], ind_);
-                delete ind_;
-            }
-        } else {
-        */
-            pop[i]->fitness = parser->Evaluate(pop[i]);
-        //}
-        conf->evaluations++;
-//        cout << "   " << i << " " << pop[i]->fitness << endl;
+    for(int i = initialIndex; i < finalIndex; i++) {       
+    	pop[i]->fitness = parser->Evaluate(pop[i]);       
     }
-
-//    #pragma omp parallel for num_threads(conf->NUM_THREADS)
-//    for(int i = initialIndex; i < finalIndex; i++){
-//        parser->Optimize(pop[i]);
-//        pop[i]->fitness = parser->Evaluate(pop[i]);
-//        conf->evaluations++;
-////        cout << "   " << i << " " << pop[i]->fitness << endl;
-//    }
 }
 
 /**
@@ -180,7 +138,6 @@ void Search::Operate() {
     }
 
 }
-
 
 /**
     Set Parameters
@@ -261,26 +218,17 @@ void Search::printParameters() {
 void Search::printResult() {
     cout << "--------------Results--------------" << endl;
     pop[0]->print();
-//    cout <<  "SERIE TREINO" << endl;
+
     parser->printResult(pop[0]);
-//    cout <<  "\nSERIE VALIDAÇÃO" << endl;
+
     parserValidation->printResult(pop[0]);
-//    cout <<  "\n\nSERIE TESTE" << endl;
+
     parserTest->printResult(pop[0]);
 }
 
 void Search::printBestIndividuo() {
 
     pop[0]->print();
-//        cout << " (" << pop[0]->fitness << ") " << endl;
-//        for(int m = 0; m < conf->numTree; m++){
-//            cout << "   f" << m << "() = (" << pop[0]->trees[m]->fitness << ") ";
-//            pop[0]->trees[m]->root->print();
-////            cout << "leastSquare=[";
-////            for(int j = 0; j < pop[0]->trees[m]->leastSquareSize; j++)
-////                cout << pop[0]->trees[m]->leastSquare[j] << ", ";
-////            cout << "]";
-//        }
     cout << endl;
 }
 
