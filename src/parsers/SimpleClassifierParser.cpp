@@ -1,8 +1,8 @@
 #include "SimpleClassifierParser.h"
 
 SimpleClassifierParser::SimpleClassifierParser() {
-    for(int i = 0; i < 2; i++){
-        for(int j = 0; j < 2; j++){
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 2; j++) {
             confusion_matrix[i][j] = 0;
         }
     }
@@ -23,11 +23,11 @@ void SimpleClassifierParser::setDataSet(double ** x,int tam) {
 
 void SimpleClassifierParser::printResult(Subject * s) {}
 
-void SimpleClassifierParser::print_confusion_tree(){
+void SimpleClassifierParser::print_confusion_tree() {
     cout << "print_confusion_tree" << endl;
-    for(int i = 0; i < 2; i++){
+    for(int i = 0; i < 2; i++) {
         cout << "|";
-        for(int j = 0; j < 2; j++){
+        for(int j = 0; j < 2; j++) {
             cout << confusion_matrix[i][j] << " ";
         }
         cout << "|";
@@ -35,13 +35,13 @@ void SimpleClassifierParser::print_confusion_tree(){
     }
 }
 
-void SimpleClassifierParser::class_distribution(){
+void SimpleClassifierParser::class_distribution() {
     int class_0 = 0;
     int class_1= 0;
     for(int j = 0; j <tamDataset; j++) {
-        if(dataset[j][data->variables] == 0){
+        if(dataset[j][data->variables] == 0) {
             class_0 +=1;
-        }else{
+        } else {
             class_1 +=1;
         }
     }
@@ -56,8 +56,8 @@ void SimpleClassifierParser::class_distribution(){
 double SimpleClassifierParser::Evaluate(Subject * s) {
     dynamic_cast<SimpleIndividuo*>(s)->erros=0;
     dynamic_cast<SimpleIndividuo*>(s)->acertos=0;
-    for(int i = 0; i < 2; i++){
-        for(int j = 0; j < 2; j++){
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 2; j++) {
             confusion_matrix[i][j] = 0;
         }
     }
@@ -78,20 +78,20 @@ double SimpleClassifierParser::Evaluate(Subject * s) {
             if(r != dataset[j][data->variables + arvore]) { // errou
                 fit += 1;
                 dynamic_cast<SimpleIndividuo*>(s)->erros+=1;
-                if(r == 0 && dataset[j][data->variables + arvore] == 1){
-                     fit+=0.86;
-                     fit+=1;
+                if(r == 0 && dataset[j][data->variables + arvore] == 1) {
+                    fit+=0.86;
+                    fit+=1;
                     confusion_matrix[0][1] += 1; // falso negativo
-                }else{
+                } else {
                     confusion_matrix[1][0] += 1; // falso positivo
                 }
             } else {
-                if(r == 0){
+                if(r == 0) {
                     confusion_matrix[0][0] += 1; // verdadeiro negativo
-                }else{
+                } else {
                     confusion_matrix[1][1] += 1; // verdadeiro positivo
                 }
-               dynamic_cast<SimpleIndividuo*>(s)->acertos +=1;
+                dynamic_cast<SimpleIndividuo*>(s)->acertos +=1;
             }
         }
         s->trees[arvore]->fitness = fit;

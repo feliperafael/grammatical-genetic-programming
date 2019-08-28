@@ -1,11 +1,9 @@
 #include "StopCriterion.h"
 
-StopCriterion::StopCriterion()
-{
+StopCriterion::StopCriterion() {
     //ctor
 }
 
-StopCriterion::~StopCriterion()
-{
+StopCriterion::~StopCriterion() {
     //dtor
 }

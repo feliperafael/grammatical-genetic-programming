@@ -11,6 +11,7 @@
 #include "../utils/pugixml-1.9/src/pugixml.hpp"
 #include <string>
 #include <sstream>
+#include <ILogger.h>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ using namespace std;
 Configures * set_configs(char * config_file);
 
 int main(int argc, char** argv) {
-
+    ILogger::getInstance()->log("PGUFJF iniciada");
     cout << "Hello GP-ufjf!" << endl;
     conf = set_configs(argv[1]);
 
@@ -27,7 +28,7 @@ int main(int argc, char** argv) {
     conf->numTree = data->prediction; // seta o numero de variaveis a serem preditas. dependente do problema a ser tratado
 
     double** dados_treino = data->values;
-    
+
     IndividuoBuilder * individuoBuilder = NULL;
     /// Setting parser
     SimpleClassifierParser * parser = new SimpleClassifierParser();
@@ -48,7 +49,7 @@ int main(int argc, char** argv) {
     Subject ** population = s->evolve();
     Subject * best = population[0];
     best->print();
-
+    ILogger::getInstance()->log("PGUFJF terminada");
     // frees
     delete s;
     delete parser;
@@ -57,7 +58,7 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-Configures * set_configs(char * config_file){
+Configures * set_configs(char * config_file) {
 
     Configures * conf = Configures::getInstance();
     pugi::xml_document doc;
@@ -88,8 +89,8 @@ Configures * set_configs(char * config_file){
     conf->NUM_THREADS = 3;
 
     data = new Database(input.child("data").attribute("file").as_string());
-    data->loadGroup(input.child("datagroup").attribute("file").as_string()); 
-   
+    data->loadGroup(input.child("datagroup").attribute("file").as_string());
+
     conf->grammar_file = input.child("grammatic").attribute("file").as_string();
 
     return conf;

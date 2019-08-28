@@ -21,6 +21,8 @@
 
 #include "operators/Crossover.h"
 #include "operators/SimpleCrossover.h"
+#include "ILogger.h"
+#include <string>
 
 # include <omp.h>
 

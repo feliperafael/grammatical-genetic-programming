@@ -38,7 +38,8 @@ Search::Search(Parser* parser,PopulationReplacement * populationreplace, Individ
     Função privada que instancia e preenche a população inicial de individuos
 **/
 void Search::createsInitialPopulation() {
-//    cout << "Create Initial Population..." << endl;
+    ILogger::getInstance()->log("Criando população inicial");
+    //    cout << "Create Initial Population..." << endl;
     pop = new Subject*[conf->popSize * 2];
 
     // #pragma omp parallel for num_threads(conf->NUM_THREADS)
@@ -51,7 +52,7 @@ void Search::replaceAllConst(int initialIndex, int finalIndex) {
     //#pragma omp parallel for num_threads(conf->NUM_THREADS)
     for(int i = initialIndex; i < finalIndex; i++) {
         //if(!pop[i]->optimized) {
-            pop[i]->trees[0]->replaceAllConst();
+        pop[i]->trees[0]->replaceAllConst();
         //}
     }
 }
@@ -70,7 +71,7 @@ Subject ** Search::evolve() {
     stable_sort(pop, pop + conf->popSize, SortPopulationFitness);
 
     //enquanto o criterio de parada não for satisfeito
-    while(!stopCriterion->Checks()){
+    while(!stopCriterion->Checks()) {
 
         Operate();
 
@@ -93,17 +94,18 @@ Subject ** Search::evolve() {
     @return void
 **/
 void Search::EvaluatePopulation(int initialIndex, int finalIndex, int optimizeRange) {
+    ILogger::getInstance()->log("Avaliando população");
     #pragma omp parallel for num_threads(conf->NUM_THREADS)
     for(int i = initialIndex; i < finalIndex; i++) {
-            pop[i]->fitness = parser->Evaluate(pop[i]);
+        pop[i]->fitness = parser->Evaluate(pop[i]);
     }
 
 }
 
 void Search::EvaluatePopulationValidation(int initialIndex, int finalIndex, int optimizeRange) {
     #pragma omp parallel for num_threads(conf->NUM_THREADS)
-    for(int i = initialIndex; i < finalIndex; i++) {       
-    	pop[i]->fitness = parser->Evaluate(pop[i]);       
+    for(int i = initialIndex; i < finalIndex; i++) {
+        pop[i]->fitness = parser->Evaluate(pop[i]);
     }
 }
 
@@ -192,10 +194,10 @@ void Search::setSelection(Selection * seletor) {
     }
 }
 
-void Search::setStopCriterion(StopCriterion * stopCriterion){
-    if(stopCriterion == NULL){
+void Search::setStopCriterion(StopCriterion * stopCriterion) {
+    if(stopCriterion == NULL) {
         this->stopCriterion = new Generations(conf->generations);
-    }else{
+    } else {
         this->stopCriterion = stopCriterion;
     }
 }
@@ -250,6 +252,6 @@ void Search::setParserValidation(Parser * p) {
 Search::~Search() {
     //dtor
     for(int i = 0; i < conf->popSize; i++) {
-            delete pop[i];
+        delete pop[i];
     }
 }

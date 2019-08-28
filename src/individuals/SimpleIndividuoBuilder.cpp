@@ -4,11 +4,11 @@ SimpleIndividuoBuilder::SimpleIndividuoBuilder() {
     //ctor
 }
 
-Subject * SimpleIndividuoBuilder::generateIndividuo(){
-	return new SimpleIndividuo(true);
+Subject * SimpleIndividuoBuilder::generateIndividuo() {
+    return new SimpleIndividuo(true);
 }
-string SimpleIndividuoBuilder::nameIndividuo(){
-	return "SimpleIndividuo";
+string SimpleIndividuoBuilder::nameIndividuo() {
+    return "SimpleIndividuo";
 }
 
 SimpleIndividuoBuilder::~SimpleIndividuoBuilder() {

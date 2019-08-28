@@ -1,11 +1,9 @@
 #include "Optimizer.h"
 
-Optimizer::Optimizer()
-{
+Optimizer::Optimizer() {
     //ctor
 }
 
-Optimizer::~Optimizer()
-{
+Optimizer::~Optimizer() {
     //dtor
 }

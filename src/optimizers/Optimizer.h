@@ -2,15 +2,14 @@
 #define OPTIMIZER_H
 #include "../individuals/Subject.h"
 
-class Optimizer
-{
-    public:
-        Optimizer();
-        virtual ~Optimizer();
+class Optimizer {
+  public:
+    Optimizer();
+    virtual ~Optimizer();
 
-    protected:
+  protected:
 
-    private:
+  private:
 };
 
 #endif // OPTIMIZER_H
