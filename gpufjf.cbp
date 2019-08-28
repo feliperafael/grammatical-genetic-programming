@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="gpufjf" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="src/;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/gpufjf" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="19 input/grammar/vst.dat input/data/data_vst.dat input/data/data_knn_60.grp 0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-w" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add directory="src" />
+					<Add directory="include" />
+					<Add directory="inc" />
+				</Compiler>
+				<Linker>
+					<Add option="-fopenmp" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/gpufjf" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="config.xml" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add directory="src" />
+					<Add directory="include" />
+					<Add directory="inc" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-fopenmp" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-O2" />
+			<Add option="-std=c++11" />
+			<Add option="-fopenmp" />
+		</Compiler>
+		<Linker>
+			<Add option="-fopenmp" />
+		</Linker>
+		<Unit filename="src/Database.cpp" />
+		<Unit filename="src/Database.h" />
+		<Unit filename="src/Grammar.cpp" />
+		<Unit filename="src/Grammar.h" />
+		<Unit filename="src/ILogger.cpp" />
+		<Unit filename="src/ILogger.h" />
+		<Unit filename="src/Search.cpp" />
+		<Unit filename="src/Search.h" />
+		<Unit filename="src/config/Configures.cpp" />
+		<Unit filename="src/config/Configures.h" />
+		<Unit filename="src/evolutionaryCycle/populationReplacement/PopulationReplacement.cpp" />
+		<Unit filename="src/evolutionaryCycle/populationReplacement/PopulationReplacement.h" />
+		<Unit filename="src/evolutionaryCycle/populationReplacement/SimpleReplace.cpp" />
+		<Unit filename="src/evolutionaryCycle/populationReplacement/SimpleReplace.h" />
+		<Unit filename="src/evolutionaryCycle/populationSelection/Selection.cpp" />
+		<Unit filename="src/evolutionaryCycle/populationSelection/Selection.h" />
+		<Unit filename="src/evolutionaryCycle/populationSelection/TournamentSelection.cpp" />
+		<Unit filename="src/evolutionaryCycle/populationSelection/TournamentSelection.h" />
+		<Unit filename="src/evolutionaryCycle/stopCriterion/Generations.cpp" />
+		<Unit filename="src/evolutionaryCycle/stopCriterion/Generations.h" />
+		<Unit filename="src/evolutionaryCycle/stopCriterion/StopCriterion.cpp" />
+		<Unit filename="src/evolutionaryCycle/stopCriterion/StopCriterion.h" />
+		<Unit filename="src/individuals/IndividuoBuilder.cpp" />
+		<Unit filename="src/individuals/IndividuoBuilder.h" />
+		<Unit filename="src/individuals/SimpleIndividuo.cpp" />
+		<Unit filename="src/individuals/SimpleIndividuo.h" />
+		<Unit filename="src/individuals/SimpleIndividuoBuilder.cpp" />
+		<Unit filename="src/individuals/SimpleIndividuoBuilder.h" />
+		<Unit filename="src/individuals/Subject.cpp" />
+		<Unit filename="src/individuals/Subject.h" />
+		<Unit filename="src/individuals/representations/tree/No.cpp" />
+		<Unit filename="src/individuals/representations/tree/No.h" />
+		<Unit filename="src/individuals/representations/tree/Tree.cpp" />
+		<Unit filename="src/individuals/representations/tree/Tree.h" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/operators/Crossover.cpp" />
+		<Unit filename="src/operators/Crossover.h" />
+		<Unit filename="src/operators/Mutation.cpp" />
+		<Unit filename="src/operators/Mutation.h" />
+		<Unit filename="src/operators/SimpleCrossover.cpp" />
+		<Unit filename="src/operators/SimpleCrossover.h" />
+		<Unit filename="src/operators/SimpleMutation.cpp" />
+		<Unit filename="src/operators/SimpleMutation.h" />
+		<Unit filename="src/optimizers/Optimizer.cpp" />
+		<Unit filename="src/optimizers/Optimizer.h" />
+		<Unit filename="src/parsers/Parser.cpp" />
+		<Unit filename="src/parsers/Parser.h" />
+		<Unit filename="src/parsers/SimpleClassifierParser.cpp" />
+		<Unit filename="src/parsers/SimpleClassifierParser.h" />
+		<Unit filename="src/parsers/SimpleParser.cpp" />
+		<Unit filename="src/parsers/SimpleParser.h" />
+		<Unit filename="utils/pugixml-1.9/src/pugiconfig.hpp" />
+		<Unit filename="utils/pugixml-1.9/src/pugixml.cpp" />
+		<Unit filename="utils/pugixml-1.9/src/pugixml.hpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

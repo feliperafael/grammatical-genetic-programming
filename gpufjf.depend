@@ -1,0 +1,215 @@
+# depslib dependency file v1.0
+1566950795 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/config/Configures.cpp
+	"Configures.h"
+
+1566951173 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/config/Configures.h
+	<stdlib.h>
+	<time.h>
+	<omp.h>
+	<string>
+	"../Grammar.h"
+
+1566780944 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/Grammar.h
+	<tuple>
+	<vector>
+	<string>
+	<sstream>
+	<fstream>
+	<algorithm>
+	<limits>
+	"Database.h"
+	"individuals/representations/tree/No.h"
+	"config/Configures.h"
+
+1566780395 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/Database.h
+	<iostream>
+	<cstring>
+	<fstream>
+	<vector>
+	<cmath>
+	"config/Configures.h"
+
+1565534239 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/representations/tree/No.h
+	<iostream>
+	<string>
+	<vector>
+	<sstream>
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/Database.cpp
+	"Database.h"
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/populationReplacement/PopulationReplacement.cpp
+	"PopulationReplacement.h"
+
+1566780326 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/populationReplacement/PopulationReplacement.h
+	"../../individuals/Subject.h"
+
+1566781258 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/Subject.h
+	<iostream>
+	<vector>
+	"representations/tree/Tree.h"
+	<string>
+
+1566781050 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/representations/tree/Tree.h
+	"No.h"
+	"../../../config/Configures.h"
+	<iostream>
+	<vector>
+	<tuple>
+
+1566785262 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/populationReplacement/SimpleReplace.cpp
+	"SimpleReplace.h"
+
+1566784540 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/populationReplacement/SimpleReplace.h
+	"../../individuals/Subject.h"
+	"PopulationReplacement.h"
+	"../../config/Configures.h"
+	<iostream>
+	<algorithm>
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/populationSelection/Selection.cpp
+	"Selection.h"
+
+1566780286 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/populationSelection/Selection.h
+	"../../individuals/Subject.h"
+
+1566784506 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/populationSelection/TournamentSelection.cpp
+	"TournamentSelection.h"
+
+1566784513 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/populationSelection/TournamentSelection.h
+	"Selection.h"
+	"../../individuals/Subject.h"
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/stopCriterion/Generations.cpp
+	"Generations.h"
+
+1565534239 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/stopCriterion/Generations.h
+	"StopCriterion.h"
+
+1565534239 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/stopCriterion/StopCriterion.h
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/evolutionaryCycle/stopCriterion/StopCriterion.cpp
+	"StopCriterion.h"
+
+1566781200 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/Grammar.cpp
+	"Grammar.h"
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/IndividuoBuilder.cpp
+	"IndividuoBuilder.h"
+
+1565534239 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/IndividuoBuilder.h
+	"Subject.h"
+	<string>
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/representations/tree/No.cpp
+	"No.h"
+	<iostream>
+	<string>
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/representations/tree/Tree.cpp
+	"Tree.h"
+
+1554067940 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/SimpleIndividuo.cpp
+	"SimpleIndividuo.h"
+
+1565538545 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/SimpleIndividuo.h
+	"Subject.h"
+
+1566782463 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/SimpleIndividuoBuilder.cpp
+	"SimpleIndividuoBuilder.h"
+
+1566781983 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/SimpleIndividuoBuilder.h
+	"IndividuoBuilder.h"
+	"SimpleIndividuo.h"
+
+1565537812 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/individuals/Subject.cpp
+	"Subject.h"
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/operators/Crossover.cpp
+	"Crossover.h"
+
+1566780136 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/operators/Crossover.h
+	"../individuals/Subject.h"
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/operators/Mutation.cpp
+	"Mutation.h"
+
+1566780150 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/operators/Mutation.h
+	"../individuals/Subject.h"
+
+1545147733 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/operators/SimpleCrossover.cpp
+	"SimpleCrossover.h"
+
+1565534239 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/operators/SimpleCrossover.h
+	"Crossover.h"
+
+1566784388 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/operators/SimpleMutation.cpp
+	"SimpleMutation.h"
+
+1566784371 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/operators/SimpleMutation.h
+	"Mutation.h"
+
+1565534239 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/optimizers/Optimizer.cpp
+	"Optimizer.h"
+
+1566780117 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/optimizers/Optimizer.h
+	"../individuals/Subject.h"
+
+1566784298 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/parsers/Parser.cpp
+	"Parser.h"
+
+1566784225 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/parsers/Parser.h
+	"../config/Configures.h"
+	"../individuals/Subject.h"
+	<string>
+
+1566785409 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/parsers/SimpleClassifierParser.cpp
+	"SimpleClassifierParser.h"
+
+1566784038 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/parsers/SimpleClassifierParser.h
+	"../config/Configures.h"
+	"Parser.h"
+	"../individuals/SimpleIndividuo.h"
+	<vector>
+	<stack>
+	<tuple>
+	<cmath>
+
+1566784180 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/parsers/SimpleParser.cpp
+	"SimpleParser.h"
+
+1566784198 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/src/parsers/SimpleParser.h
+	"../config/Configures.h"
+	"Parser.h"
+	"../individuals/SimpleIndividuo.h"
+	<vector>
+	<stack>
+	<tuple>
+	<cmath>
+
+1522839196 source:/home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/utils/pugixml-1.9/src/pugixml.cpp
+	"pugixml.hpp"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<assert.h>
+	<limits.h>
+	<wchar.h>
+	<math.h>
+	<float.h>
+	<istream>
+	<ostream>
+	<string>
+	<new>
+	<stdint.h>
+
+1522839196 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/utils/pugixml-1.9/src/pugixml.hpp
+	"pugiconfig.hpp"
+	<stddef.h>
+	<exception>
+	<iterator>
+	<iosfwd>
+	<string>
+
+1522839196 /home/felipe/Documentos/pg/eng-soft/grammatical-genetic-programming/utils/pugixml-1.9/src/pugiconfig.hpp
+
