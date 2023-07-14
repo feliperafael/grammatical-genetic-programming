@@ -191,7 +191,7 @@ tuple<double, double, string> Grammar::getTerminal(string t) {
 //        if(!isdigit(c))
 //            number = false;
 
-    int var = data->getCode(t);
+    int var = Database::getInstance().getCode(t);
     if(var != -1)
         return make_tuple(1, var, t);
 

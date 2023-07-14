@@ -34,8 +34,8 @@ double SimpleParser::Evaluate(Subject* s) {
                 s->trees[arvore]->root->print();
                 break;
             }
-            // Para regressao // fit += pow(r - dataset[j][data->variables + arvore], 2);
-            if (r != dataset[j][data->variables + arvore]) {
+            // Para regressao // fit += pow(r - dataset[j][Database::getInstance().variables + arvore], 2);
+            if (r != dataset[j][Database::getInstance().variables + arvore]) {
                 fit++;
                 if(r==0) {
                     fit++;

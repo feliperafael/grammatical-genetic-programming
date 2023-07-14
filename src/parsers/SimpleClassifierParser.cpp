@@ -39,7 +39,7 @@ void SimpleClassifierParser::class_distribution() {
     int class_0 = 0;
     int class_1= 0;
     for(int j = 0; j <tamDataset; j++) {
-        if(dataset[j][data->variables] == 0) {
+        if(dataset[j][Database::getInstance().variables] == 0) {
             class_0 +=1;
         } else {
             class_1 +=1;
@@ -75,10 +75,10 @@ double SimpleClassifierParser::Evaluate(Subject * s) {
                 break;
             }
 
-            if(r != dataset[j][data->variables + arvore]) { // errou
+            if(r != dataset[j][Database::getInstance().variables + arvore]) { // errou
                 fit += 1;
                 dynamic_cast<SimpleIndividuo*>(s)->erros+=1;
-                if(r == 0 && dataset[j][data->variables + arvore] == 1) {
+                if(r == 0 && dataset[j][Database::getInstance().variables + arvore] == 1) {
                     fit+=0.86;
                     fit+=1;
                     confusion_matrix[0][1] += 1; // falso negativo

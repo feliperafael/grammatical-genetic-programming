@@ -11,9 +11,11 @@
 #include "../utils/pugixml-1.9/src/pugixml.hpp"
 #include <string>
 #include <sstream>
-#include <ILogger.h>
+#include "ILogger.h"
 
 using namespace std;
+extern Database* data;  // Declaração da variável global
+
 
 #define simpleParser
 Configures * set_configs(char * config_file);
@@ -23,11 +25,15 @@ int main(int argc, char** argv) {
     cout << "Hello GP-ufjf!" << endl;
     conf = set_configs(argv[1]);
 
+    cout << "conf->grammar_file " << conf->grammar_file << endl;
+
+
+
     grammar = new Grammar(conf->grammar_file); //
 
-    conf->numTree = data->prediction; // seta o numero de variaveis a serem preditas. dependente do problema a ser tratado
+    conf->numTree = Database::getInstance().prediction; // seta o numero de variaveis a serem preditas. dependente do problema a ser tratado
 
-    double** dados_treino = data->values;
+    double** dados_treino = Database::getInstance().values;
 
     IndividuoBuilder * individuoBuilder = NULL;
     /// Setting parser
@@ -36,9 +42,9 @@ int main(int argc, char** argv) {
     SimpleClassifierParser * parserValidation = new SimpleClassifierParser();
     individuoBuilder = new SimpleIndividuoBuilder();
 
-    parser->setDataSet(data->training,data->totalTraining);
-    parserTest->setDataSet(data->test,data->totalTest);
-    parserValidation->setDataSet(data->validation,data->totalValidation);
+    parser->setDataSet(Database::getInstance().training,Database::getInstance().totalTraining);
+    parserTest->setDataSet(Database::getInstance().test,Database::getInstance().totalTest);
+    parserValidation->setDataSet(Database::getInstance().validation,Database::getInstance().totalValidation);
 
     Search* s = new Search(parser, NULL, individuoBuilder);
     s->printParameters();
@@ -53,7 +59,6 @@ int main(int argc, char** argv) {
     // frees
     delete s;
     delete parser;
-    delete data;
 
     return 0;
 }
@@ -76,7 +81,6 @@ Configures * set_configs(char * config_file) {
     input = doc.child("genetic_programming").child("input");
 
 
-
     conf->mutationRate = operators_rate.attribute("mutation").as_float();
     conf->crossoverRate = operators_rate.attribute("crossover").as_float();
     conf->elitism = operators_rate.attribute("elitism").as_float();
@@ -88,8 +92,11 @@ Configures * set_configs(char * config_file) {
 
     conf->NUM_THREADS = 3;
 
-    data = new Database(input.child("data").attribute("file").as_string());
-    data->loadGroup(input.child("datagroup").attribute("file").as_string());
+    Database& data = Database::getInstance();
+   
+    data.loadBase(input.child("data").attribute("file").as_string());
+    data.loadGroup(input.child("datagroup").attribute("file").as_string());
+
 
     conf->grammar_file = input.child("grammatic").attribute("file").as_string();
 

@@ -1,13 +1,16 @@
 #include "Database.h"
 
-Database* data;
+Database& Database::getInstance() {
+    static Database instance;
+    return instance;
+}
 
-Database::Database(string arq) {
-    loadBase(arq);
+Database::Database() {
+    // Implementação do construtor
 }
 
 Database::~Database() {
-    //dtor
+    // Implementação do destrutor
 }
 
 void Database::print() {
@@ -24,7 +27,7 @@ void Database::print() {
 
 void Database::loadBase(string base) {
     ifstream arq;
-
+    cout << "BASE FILE: " << base << endl;
     arq.open(base);
 
     arq >> variables >> prediction >> size;

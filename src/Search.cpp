@@ -147,7 +147,7 @@ void Search::Operate() {
 void Search::setParser(Parser * parser) {
     if(parser==NULL) {
         SimpleParser * avaliador  = new SimpleParser();
-        avaliador->setDataSet(data->training,data->totalTraining);
+        avaliador->setDataSet(Database::getInstance().training,Database::getInstance().totalTraining);
         this->parser = avaliador;
     } else {
         this->parser = parser;

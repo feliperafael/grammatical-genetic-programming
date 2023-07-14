@@ -1,3 +1,5 @@
+// Database.h
+
 #ifndef DATABASE_H
 #define DATABASE_H
 
@@ -11,8 +13,9 @@
 using namespace std;
 
 class Database {
-  public:
-    Database(string arq);
+public:
+    static Database& getInstance();
+
     virtual ~Database();
 
     void loadBase(string base);
@@ -33,10 +36,6 @@ class Database {
 
     void print();
 
-
-//    protected:
-
-//    private:
     int variables;
     int prediction;
     int size;
@@ -47,8 +46,11 @@ class Database {
     double** training;
     double** validation;
     double** test;
-};
 
-extern Database* data;
+  private:
+    Database(); // Construtor privado para impedir a criação de instâncias
+    Database(const Database&) = delete; // Desabilita o construtor de cópia
+
+};
 
 #endif // DATABASE_H
