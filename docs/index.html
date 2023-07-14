@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UFJF genetic programming</title>
+</head>
+<body>
+<h1>UFJF genetic programming</h1>
+<p>Este repositório contém um código em C++ para um algoritmo de programação genética.</p>
+<h2>Requisitos</h2>
+<ul>
+    <li>C++ 11 ou superior</li>
+    <li>Cmake</li>
+</ul>
+<h2>Como compilar?</h2>
+<p>Crie e entre em uma pasta chamada "build" (você pode usar outro nome de sua preferência) dentro da raiz do projeto.</p>
+<pre><code>mkdir build
+cd build
+</code></pre>
+<p>Compile o código fonte utilizando o seguinte comando:</p>
+<pre><code>cmake ..
+make
+</code></pre>
+<h2>Como executar?</h2>
+<p>Após compilar, abra o terminal na raiz do projeto e execute o seguinte comando:</p>
+<pre><code>./build/pgufjf config.xml
+</code></pre>
+<h2>Arquivo de configuração</h2>
+<p>O arquivo de configuração <code>config.xml</code> deve ser adaptado com os caminhos para os dados de entrada do seu problema, assim como os hiperparâmetros escolhidos para seu problema.</p>
+<h3>Configurações Gerais</h3>
+<p><code>&lt;operators_rate&gt;</code>: Especifica as taxas de mutação, cruzamento e elitismo. Ajuste os valores dos atributos mutation, crossover e elitism de acordo com suas preferências.</p>
+<p><code>&lt;search&gt;</code>: Define o tamanho da população e o número de gerações para a execução do algoritmo. Ajuste os valores dos atributos population e generation de acordo com suas necessidades.</p>
+<p><code>&lt;model&gt;</code>: Define a profundidade máxima para as árvores geradas pelo algoritmo. Ajuste o valor do atributo maxdeep de acordo com as restrições do seu problema.</p>
+<p><code>&lt;seed&gt;</code>: Define a semente para a geração de números aleatórios. Ajuste o valor do atributo value de acordo com suas preferências.</p>
+<p><code>&lt;num_threads&gt;</code>: Define o número de threads a serem utilizadas pelo algoritmo. Ajuste o valor do atributo value de acordo com a capacidade do seu sistema.</p>
+<h3>Configurações de Entrada de Dados</h3>
+<p>As configurações de entrada de dados especificam os caminhos para os arquivos de dados do seu problema. Ajuste os valores dos atributos file para corresponder aos caminhos corretos dos arquivos de entrada.</p>
+<p><code>&lt;data&gt;</code>: Especifica o arquivo de dados principal. Ajuste o valor do atributo file para o caminho correto do arquivo de dados.</p>
+<p><code>&lt;datagroup&gt;</code>: Especifica a divisão dos dados de treino, validação e teste.</p>
+<p><code>&lt;grammatic&gt;</code>: Especifica o arquivo de gramática. Ajuste o valor do atributo file para o caminho correto do arquivo de gramática.</p>
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;genetic_programming&gt;
+    &lt;config&gt;
+        &lt;operators_rate mutation="0.1" crossover="0.9" elitism="0.1" &gt;
+            
+        &lt;/operators_rate&gt;
+        &lt;search population="100" generation="500" /&gt;
+        &lt;model maxdeep="5" /&gt;
+        &lt;seed value="42" /&gt;
+        &lt;num_threads value="4" /&gt;
+    &lt;/config&gt;
+    &lt;input&gt;      
+        &lt;data file="input/data/data_vst.dat"/&gt;
+        &lt;datagroup file="input/data/data_knn_60.grp"/&gt;
+        &lt;grammatic file="input/grammar/vst.dat"/&gt;
+    &lt;/input&gt;
+&lt;/genetic_programming&gt;
+</code></pre>
+<h1>Gramática</h1>
+<h2>Grammar Dictionary</h2>
+<ol>
+    <li>Non Terminals = &lt;x&gt;</li>
+    <li>Terminals
+        <ul>
+            <li>Numbers = 1, 1.1, 11.11</li>
+            <li>Variables = x, x1, name **** mesmo escrito na base de dados ****</li>
+            <li>Operators and Constants
+                <ul>
+                    <li>Constants
+                        <ul>
+                            <li>PI_</li>
+                            ...
+                        </ul>
+                    </li>
+                    <li>Operators
+                        <ul>
+                            <li>Sum = +</li>
+                            <li>Subtraction = -</li>
+                            <li>Multiplication = *</li>
+                            <li>Division = /</li>
+                            <li>Pow = ^</li>
+                            <li>Square Root = sqrt</li>
+                            <li>Exponential = exp</li>
+                            <li>Natural Logarithm = log</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2>Como o código está organizado?</h2>
+<p>O diretório <code>/src</code> é onde estão todos os códigos-fonte básicos da programação genética, incluindo classes abstratas e implementações padrão.</p>
+<p>O diretório <code>/input</code> é onde os arquivos de entrada dependem do problema em questão.</p>
+<p>No diretório <code>/include</code> devem estar todos os arquivos adicionados ao código-fonte básico em <code>/src</code> ou todas as classes derivadas implementadas.</p>
+<h2>Como adaptar o código para um novo problema?</h2>
+<p>Em breve</p>
+<hr>
+<h2>Como está organizado o código?</h2>
+<h3>Configures.h</h3>
+<p>Contém todas configurações e parâmetros necessários no código. Pode ser acessado de qualquer classe.</p>
+<h3>Crossover.h</h3>
+<p>Classe abstrata responsável pelo cruzamento dos indivíduos. Você deve estender essa classe e implementar sua função de cruzamento, a qual recebe um vetor de indivíduos e seu tamanho.</p>
+<pre><code>void cross(Individual ** vec_individuos, int num_individuos);
+</code></pre>
+<h3>Database.h</h3>
+<p>Classe abstrata de dados responsável pelos dados utilizados pelo AG. Caso você use leitura de arquivos diferentes do formato padrão, você deve estender a função loadBase conforme sua necessidade.</p>
+<pre><code>void loadBase(string base_name);
+</code></pre>
+<p>Onde base_name é o nome do arquivo de entrada.</p>
+<h3>Individual.h</h3>
+<p>Classe abstrata com a representação do indivíduo. Possui atributo aptidão, o qual indica o quão apto está minha solução/indivíduo. Essa classe deve ser estendida conforme a necessidade do problema a ser resolvido.</p>
+<h3>IndividualBuilder.h</h3>
+<p>Classe abstrata responsável pela criação de um indivíduo. Quando criado um novo indivíduo, também deve ser criado um individuoBuilder responsável pela sua geração.</p>
+<pre><code>Individual * generateIndividuo();
+</code></pre>
+<h3>IndividualSelector.h</h3>
+<p>Classe abstrata responsável pela seleção dos indivíduos da população para cruzamento e mutação.</p>
+<pre><code>Individual * selects(Individual ** pop);
+</code></pre>
+<h3>LocalSearch.h</h3>
+<p>Classe abstrata responsável por realizar busca local/ajuste de parâmetros em um dado indivíduo. Deve ser estendida conforme o tipo de indivíduo do problema.</p>
+<h3>Mutation.h</h3>
+<p>Classe abstrata responsável pela mutação de um dado indivíduo. Deve ser estendida conforme o tipo de indivíduo do problema.</p>
+<h3>Parser.h</h3>
+<p>Classe abstrata responsável por avaliar a qualidade de uma solução/indivíduo. Também deve ser estendida conforme o tipo de indivíduo do problema.</p>
+<h3>PopulationReplacement.h</h3>
+<p>Classe abstrata responsável pela junção dos indivíduos da antiga população com a nova população do AG. Pode ser estendida conforme características do problema.</p>
+<h3>SearchEngine.h</h3>
+<p>Parte central do Algoritmo Genético, essa classe é responsável por fazer as chamadas dos operadores genéticos e por guiar todo o processo de busca. O método void Evolve() é responsável por evoluir uma população de soluções com as características setadas em SearchEngine e com os parâmetros setados no arquivo de configuração Configures.h. Essa classe possui diversos métodos sets para setar classes que foram estendidas segundo características do problema:</p>
+<pre><code>void setCrossover(Crossover * opCrossover);
+void setMutation(Mutation * opMutation);
+void setIndividualBuilder(IndividualBuilder * indBuilder);
+void setPopulationReplace(PopulationReplacement * popReplace);
+void setParser(Parser * parser);
+void setSelection(IndividualSelector * seletor);
+void setLocalSearch(LocalSearch * localSearch);
+</code></pre>
+<h2>License</h2>
+<p>MIT</p>
+<p><strong>Free Software, :D!</strong></p>
+</body>
+</html>
