@@ -8,6 +8,7 @@
 		<search population="100" generation="500" />
 		<model maxdeep="5" />
 		<seed value="42" />
+		<num_threads value="4" />
 	</config>
 	<input>	  
 		<data file="input/data/data_vst.dat"/>

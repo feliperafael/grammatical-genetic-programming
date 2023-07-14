@@ -27,7 +27,7 @@ void Database::print() {
 
 void Database::loadBase(string base) {
     ifstream arq;
-    cout << "BASE FILE: " << base << endl;
+    
     arq.open(base);
 
     arq >> variables >> prediction >> size;

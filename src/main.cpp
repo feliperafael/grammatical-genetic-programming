@@ -21,13 +21,9 @@ extern Database* data;  // Declaração da variável global
 Configures * set_configs(char * config_file);
 
 int main(int argc, char** argv) {
-    ILogger::getInstance()->log("PGUFJF iniciada");
+    ILogger::getInstance()->log("Programação Genética UFJF iniciada");
     cout << "Hello GP-ufjf!" << endl;
     conf = set_configs(argv[1]);
-
-    cout << "conf->grammar_file " << conf->grammar_file << endl;
-
-
 
     grammar = new Grammar(conf->grammar_file); //
 
@@ -90,7 +86,7 @@ Configures * set_configs(char * config_file) {
 
     srand(config.child("seed").attribute("value").as_int()); //seed
 
-    conf->NUM_THREADS = 3;
+    conf->NUM_THREADS = config.child("num_threads").attribute("value").as_int();
 
     Database& data = Database::getInstance();
    

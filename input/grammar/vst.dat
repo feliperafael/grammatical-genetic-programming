@@ -1,7 +1,7 @@
 <expr> ::= <expr> <expr> <bool> if-else | <class> 
 <bool> ::= <cont> <cont> <bin> | <bool> <bool> <bin>
 <bin> ::= and | or 
-<cont> ::= alcohol_use_1 <alcohol_use_1> <comp> | alcohol_use_2 <alcohol_use_2> <comp> | alcohol_use_3 <alcohol_use_3> <comp> | education <education> <comp> | ladder <ladder> <comp> | tried_quit <tried_quit> <comp> | ftnd_1  <ftnd_1> <comp> | ftnd_2 <ftnd_2> <comp> | ftnd_3 <ftnd_3> <comp> | ftnd_4 <ftnd_4> <comp> | ftnd_5 <ftnd_5> <comp> | ftnd_6 <ftnd_6> <comp> | tempo_para_parar_dias <tempo_para_parar_dias> <comp> | age <age> <comp>
+<cont> ::= alcohol_use_1 <alcohol_use_1> <comp> | alcohol_use_2 <alcohol_use_2> <comp> | alcohol_use_3 <alcohol_use_3> <comp> | education <education> <comp> | ladder <ladder> <comp> | tried_quit <tried_quit> <comp> | ftnd_1  <ftnd_1> <comp> | ftnd_2 <ftnd_2> <comp> | ftnd_3 <ftnd_3> <comp> | ftnd_4 <ftnd_4> <comp> | ftnd_5 <ftnd_5> <comp> | ftnd_6 <ftnd_6> <comp> | tempo_para_parar_dias <tempo_para_parar_dias> <comp>
 <contBin> ::= pnad_a <pnad_a> <bincomp> | pnad_b <pnad_b> <bincomp> | pnad_d <pnad_d> <bincomp> |  pnad_f <pnad_f> <bincomp> | pnad_g <pnad_g> <bincomp> | pnad_h <pnad_h> <bincomp> | tentou_parar <tentou_parar> <bincomp> | gender <gender> <bincomp> | employed <employed> <bincomp>
 <comp> ::= < | >
 <bincomp> ::= == | !=
@@ -27,5 +27,4 @@
 <pnad_h> ::= 0 | 1
 <tempo_para_parar_dias> ::= 0 | 1 | 2
 <tentou_parar> ::= 0 | 1
-<age> ::= 15 | 18 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59 | 60 | 61 | 62 | 63 | 64 | 65 | 67 | 68 | 69
 <gender> ::= 0 | 1
