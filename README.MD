@@ -33,7 +33,7 @@ Após compilar abra o terminal na raiz do projeto e rode o seguinte comando no s
 # <b>Arquivo de configuração</b>
 O arquivo de configuração `config.xml ` deve ser adaptado com os caminhos para os dados de entrada do seu problema, assim como os hiperparametros escolhidos para seu problema.
 
-##Configurações Gerais
+## Configurações Gerais
 - `<operators_rate>`: Especifica as taxas de mutação, cruzamento e elitismo. Ajuste os valores dos atributos mutation, crossover e elitism de acordo com suas preferências.
 
 - `<search>`: Define o tamanho da população e o número de gerações para a execução do algoritmo. Ajuste os valores dos atributos population e generation de acordo com suas necessidades.
