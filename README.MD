@@ -9,7 +9,7 @@ Este repositório contém um código em C++ para um algoritmo de programação g
 - Cmake
 
 <b>Como compilar?</b> 
-- crie e entre na em uma pasta chama build (você pode usar outro nome de sua preferência) dentro da raiz do projeto.
+- crie e entre em uma pasta chama build (você pode usar outro nome de sua preferência) dentro da raiz do projeto.
 
 ```shell
 mkdir build
