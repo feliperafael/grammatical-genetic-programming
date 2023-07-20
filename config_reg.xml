@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<genetic_programming>
+	<!-- here is a genetic programming node -->
+	<config>
+		<operators_rate mutation="0.1" crossover="0.9" elitism="0.1" >
+			
+		</operators_rate>
+		<search population="100" generation="50" />
+		<model maxdeep="8" />
+		<seed value="42" />
+		<num_threads value="8" />
+	</config>
+	<input>	  
+		<data file="input/data/velocity.data"/>
+		<datagroup file="input/data/velocity.grp"/>
+		<grammatic file="input/grammar/velocity.gram"/>
+	</input>
+</genetic_programming>

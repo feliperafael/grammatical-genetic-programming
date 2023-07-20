@@ -27,6 +27,8 @@ void Database::print() {
 
 void Database::loadBase(string base) {
     ifstream arq;
+
+    cout << "loading database: " << base << endl;
     
     arq.open(base);
 
@@ -51,7 +53,7 @@ void Database::loadBase(string base) {
 
 void Database::loadGroup(string group) {
     ifstream arq;
-
+    cout << "group file " << group << endl;
     arq.open(group);
 
     arq >> totalTraining >> totalValidation >> totalTest;

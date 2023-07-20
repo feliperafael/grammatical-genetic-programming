@@ -4,7 +4,7 @@
 #include "config/Configures.h"
 #include "Search.h"
 #include "parsers/SimpleParser.h"
-#include "parsers/SimpleClassifierParser.h"
+#include "parsers/SimpleRegressionParser.h"
 #include "individuals/IndividuoBuilder.h"
 #include "individuals/Subject.h"
 #include <omp.h>
@@ -14,7 +14,6 @@
 #include "ILogger.h"
 
 using namespace std;
-extern Database* data;  // Declaração da variável global
 
 
 #define simpleParser
@@ -24,24 +23,29 @@ int main(int argc, char** argv) {
     ILogger::getInstance()->log("Programação Genética UFJF iniciada");
     cout << "Hello GP-ufjf!" << endl;
     conf = set_configs(argv[1]);
+    
 
     grammar = new Grammar(conf->grammar_file); //
 
-    conf->numTree = Database::getInstance().prediction; // seta o numero de variaveis a serem preditas. dependente do problema a ser tratado
+    conf->numTree = 1; //Database::getInstance().prediction; // seta o numero de variaveis a serem preditas. dependente do problema a ser tratado
 
     double** dados_treino = Database::getInstance().values;
+    //Database::getInstance().print();
 
     IndividuoBuilder * individuoBuilder = NULL;
     /// Setting parser
-    SimpleClassifierParser * parser = new SimpleClassifierParser();
-    SimpleClassifierParser * parserTest = new SimpleClassifierParser();
-    SimpleClassifierParser * parserValidation = new SimpleClassifierParser();
+    SimpleRegressionParser * parser = new SimpleRegressionParser();
+    SimpleRegressionParser * parserTest = new SimpleRegressionParser();
+    SimpleRegressionParser * parserValidation = new SimpleRegressionParser();
     individuoBuilder = new SimpleIndividuoBuilder();
 
+    
     parser->setDataSet(Database::getInstance().training,Database::getInstance().totalTraining);
+    
     parserTest->setDataSet(Database::getInstance().test,Database::getInstance().totalTest);
+    
     parserValidation->setDataSet(Database::getInstance().validation,Database::getInstance().totalValidation);
-
+   
     Search* s = new Search(parser, NULL, individuoBuilder);
     s->printParameters();
 
@@ -51,6 +55,7 @@ int main(int argc, char** argv) {
     Subject ** population = s->evolve();
     Subject * best = population[0];
     best->print();
+    cout << "fit " << best->fitness << endl;
     ILogger::getInstance()->log("PGUFJF terminada");
     // frees
     delete s;

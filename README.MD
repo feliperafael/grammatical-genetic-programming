@@ -26,9 +26,10 @@ make
 Após compilar abra o terminal na raiz do projeto e rode o seguinte comando no seu terminal:
 
 ```shell
-./build/pgufjf config.xml
+./build/pgufjf config_reg.xml
 ```
 <br>
+O arquivo config_reg.xml está configurado para o problema da função horária do espaço S = So + Vot + at²/2  
 
 # <b>Arquivo de configuração</b>
 O arquivo de configuração `config.xml ` deve ser adaptado com os caminhos para os dados de entrada do seu problema, assim como os hiperparametros escolhidos para seu problema.
