@@ -9,7 +9,7 @@ Este repositório contém um código em C++ para um algoritmo de programação g
 - Cmake
 
 <b>Como compilar?</b> 
-- crie e entre na em uma pasta chama build (você pode usar outro nome de sua preferência) dentro da raiz do projeto.
+- crie e entre em uma pasta chama build (você pode usar outro nome de sua preferência) dentro da raiz do projeto.
 
 ```shell
 mkdir build
@@ -34,7 +34,7 @@ O arquivo config_reg.xml está configurado para o problema da função horária 
 # <b>Arquivo de configuração</b>
 O arquivo de configuração `config.xml ` deve ser adaptado com os caminhos para os dados de entrada do seu problema, assim como os hiperparametros escolhidos para seu problema.
 
-##Configurações Gerais
+## Configurações Gerais
 - `<operators_rate>`: Especifica as taxas de mutação, cruzamento e elitismo. Ajuste os valores dos atributos mutation, crossover e elitism de acordo com suas preferências.
 
 - `<search>`: Define o tamanho da população e o número de gerações para a execução do algoritmo. Ajuste os valores dos atributos population e generation de acordo com suas necessidades.
